@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2 por 2</title>
+</head>
+<body>
+    <h1> Escolha a Matriz </h1>
+    <form method="post" action="{% url 'calculator' %}">
+        {% csrf_token %}
+        <input type="number" name="num1" placeholder="Enter first number">
+        <input type="number" name="num2" placeholder="Enter second number">
+        <select name="operation">
+            <option value="add">+</option>
+            <option value="subtract">-</option>
+            <option value="multiply">*</option>
+            <option value="divide">/</option>
+        </select>
+        <button type="submit">Calculate</button>
+    </form>
+    {% if result %}
+        <h3>Result: {{ result }}</h3>
+    {% endif %}
+    {% if error %}
+        <p>{{ error }}</p>
+    {% endif %}
+</body>
+</html>
